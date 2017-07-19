@@ -3,7 +3,7 @@
     <el-input type="textarea"
       :rows="10"
       style="width:500px;position:relative;"
-      placeholder="待翻译文本"
+      placeholder="在这里粘贴待翻译文本"
       v-model="textarea">
     </el-input>
   </div>

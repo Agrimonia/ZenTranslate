@@ -4,21 +4,17 @@
     <h1>{{ msg }}</h1>
     <h2>{{ readme }}</h2>
     <br><br>
-    <div id = "start">
-      <el-button size="large" @click="nextpage">Start Now</el-button>
-    </div>
-    <br><br><br><br>
 
-    <div style="float:left;width:100%;">
-      <div style="float:left;width:40%">
-        <editor></editor>
-      </div>
-      <div style="float:left;width:30%">
-        <workflow></workflow>
-      </div>
-      <br><br>
-    </div>
 
+    <editor></editor>
+    <br><br>
+    <div id = "start" >
+        <el-button size="large" @click="start">开始翻译</el-button>
+    </div>
+    <h3>或</h3>
+    <div id = "start" >
+        <el-button size="large" @click="upload">上传文件</el-button>
+    </div>
     <author></author>
 
 
@@ -30,7 +26,7 @@
 <script>
 import author from './component/author.vue'
 import editor from './component/editor.vue'
-import workflow from './component/workflow.vue'
+
 export default {
   name: 'app',
   data () {
@@ -39,7 +35,7 @@ export default {
       readme: "ZenTranslate 是一个用于进行轻量翻译工作的在线工具 "
     }
   },
-  components:{ author , editor , workflow }
+  components:{ author , editor }
 }
 
 </script>
