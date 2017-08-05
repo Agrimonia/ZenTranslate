@@ -1,8 +1,12 @@
 <template>
   <div @keydown.tab.prevent="switchToNext()">
-    <textarea v-model="currentSentence" autofocus></textarea>
+    <el-input type="textarea"
+      :rows="5"
+      style="width:800px;position:relative;"
+      v-model="currentSentence" autofocus>
+    </el-input>
     <div>
-      <button @click="switchToNext()">下一句(Tab)</button>
+      <el-button @click="switchToNext()">下一句(Tab)</el-button>
     </div>
   </div>
 </template>

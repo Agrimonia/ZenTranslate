@@ -4,10 +4,14 @@ import editPage from '../components/EditPage';
 
 Vue.use(Router);
 
+
 export default new Router({
   routes: [{
     path: '/',
-    name: 'Hello',
+  },
+  {
+    path: '/editPage',
+    name: 'editPage',
     component: editPage,
   }],
 });
