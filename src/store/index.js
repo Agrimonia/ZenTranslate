@@ -21,19 +21,15 @@ export default new Vuex.Store({
   },
   mutations: {
     switchToNext(state) {
-      // eslint-disable-next-line no-param-reassign
       state.currentIndex += 1;
       if (state.currentIndex === state.sentences.length) {
-        // eslint-disable-next-line no-param-reassign
         state.currentIndex = 0;
       }
     },
     switchCurrentIndex(state, key) {
-      // eslint-disable-next-line no-param-reassign
       state.currentIndex = key;
     },
     updateTranslatedSentence(state, editedSentence) {
-      // eslint-disable-next-line no-param-reassign
       state.translatedSentences[state.currentIndex] = editedSentence;
     },
   },
