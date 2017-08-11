@@ -1,9 +1,8 @@
 <template>
-  <div>
+  <div style = "overflow-y: auto" >
     <div v-for="(sentence, key) in sentences" :key="key">
       <span @click="switchCurrentIndex(key)" :class="{selected:currentIndex==key}">{{sentence}}</span>
-      <br>
-      <br>
+
     </div>
   </div>
 </template>
@@ -27,7 +26,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>  
+<style scoped>
 .selected {
   background-color: skyblue;
   border-color: blue;
