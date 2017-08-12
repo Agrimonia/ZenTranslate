@@ -7,12 +7,7 @@ export default new Vuex.Store({
   state: {
     currentIndex: 0,
     sentences: [],
-    translatedSentences: [
-      'test translated sentence 1',
-      'test translated sentence 2',
-      'test translated sentence 3',
-      'test translated sentence 4',
-    ],
+    translatedSentences: [],
   },
   getters: {
     currentSentence: state => state.sentences[state.currentIndex],
@@ -31,6 +26,12 @@ export default new Vuex.Store({
     },
     updateTranslatedSentence(state, editedSentence) {
       state.translatedSentences[state.currentIndex] = editedSentence;
+    },
+    loadSentences(state, sentences) {
+      state.sentences = sentences;
+    },
+    loadTranslatedSentences(state, translatedSentences) {
+      state.translatedSentences = translatedSentences;
     },
   },
   // actions: {

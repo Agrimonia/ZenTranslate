@@ -56,8 +56,8 @@ export default {
           strArray.splice(count, 1);
         }
       }
-      this.$store.state.sentences = strArray;
-      this.$store.state.translatedSentences = this.$store.state.sentences;
+      this.$store.commit('loadSentences', strArray);
+      this.$store.commit('loadTranslatedSentences', strArray);
     },
     upload: () => {
     },
