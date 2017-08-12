@@ -6,12 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     currentIndex: 0,
-    sentences: [
-      'test sentence 1',
-      'test sentence 2',
-      'test sentence 3',
-      'test sentence 4',
-    ],
+    sentences: [],
     translatedSentences: [
       'test translated sentence 1',
       'test translated sentence 2',

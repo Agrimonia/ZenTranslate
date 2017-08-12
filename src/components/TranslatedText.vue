@@ -1,9 +1,7 @@
 <template>
-  <div>
+  <div style = "overflow-y: auto">
     <div v-for="(sentence, key) in translatedSentences" :key="key">
       <span @click="switchCurrentIndex(key)" :class="{selected:currentIndex==key}">{{sentence}}</span>
-      <br>
-      <br>
     </div>
   </div>
 </template>
