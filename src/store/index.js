@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -19,6 +20,12 @@ export default new Vuex.Store({
       state.currentIndex += 1;
       if (state.currentIndex === state.sentences.length) {
         state.currentIndex = 0;
+      }
+    },
+    switchToPrevious(state) {
+      state.currentIndex -= 1;
+      if (state.currentIndex === 0) {
+        state.currentIndex = state.sentences.length;
       }
     },
     switchCurrentIndex(state, key) {
