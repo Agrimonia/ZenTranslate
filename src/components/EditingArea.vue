@@ -26,9 +26,6 @@ export default {
   methods: {
     switchToNext() {
       this.$store.commit('switchToNext');
-      // if (this.currentSentence === '') {
-      //   this.$store.dispatch('machineTranslate', this.currentSentence);
-      // }
     },
   },
 };
