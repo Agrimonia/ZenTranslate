@@ -5,22 +5,55 @@
     <h2>A one-stop computer-assisted translation platform for lightweight translation work</h2>
     <br>
     <br>
-    <div id="form">
-      <el-input type="textarea" :rows="10" style="width:500px;position:relative;" placeholder="在这里粘贴待翻译文本" v-model="textarea">
-      </el-input>
-      <br>
-      <br>
-      <br>
-      <router-link to='/editPage'>
-        <el-button size="large" @click="splitSentence">开始翻译</el-button>
-      </router-link>
-      <h3>或</h3>
-      <div id="paste">
-        <el-button size="large" @click="upload">上传文件</el-button>
-      </div>
-      <div id="author">
-        <h1>JoTang Studio</h1>
-      </div>
+    <el-carousel :interval="4000" type="card" height="400px">
+      <el-carousel-item v-for="item in 4" :key="item">
+        <h3>{{ item }}</h3>
+        <!-- Need some pictures -->
+      </el-carousel-item>
+    </el-carousel>
+    <table>
+      <td>
+        <el-button size="large" @click="dialogFormVisible = true">粘贴文本</el-button>
+        <el-dialog size="small" :visible.sync="dialogFormVisible">
+          <el-steps :space="200" :active="1" center="true" finish-status="success">
+            <el-step title="上传"></el-step>
+            <el-step title="翻译"></el-step>
+            <el-step title="导出"></el-step>
+          </el-steps>
+          <el-input type="textarea" :rows="20" placeholder="在这里键入或粘贴待翻译文本" v-model="textarea">
+          </el-input>
+          <br>
+          <br>
+          <router-link to='/editPage'>
+            <el-button size="large" @click="splitSentence">开始翻译</el-button>
+          </router-link>
+        </el-dialog>
+      </td>
+      <td>
+        <h3>&emsp;或&emsp;</h3>
+      </td>
+      <td>
+        <el-button size="large" @click="dialogUploadVisible = true">上传文件</el-button>
+        <el-dialog size="tiny" :visible.sync="dialogUploadVisible">
+          <el-steps :space="150" :active="1" center="true" finish-status="success">
+            <el-step title="上传"></el-step>
+            <el-step title="翻译"></el-step>
+            <el-step title="导出"></el-step>
+          </el-steps>
+          <el-upload
+            class="upload-demo"
+            drag
+            action="https://jsonplaceholder.typicode.com/posts/"
+            >
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            <div class="el-upload__tip" slot="tip">只能上传文本文件，且不超过500kb</div>
+          </el-upload>
+        </el-dialog>
+      </td>
+    </table>
+    <div id="author">
+      <h1>JoTang Studio</h1>
     </div>
     <br>
     <br>
@@ -33,6 +66,8 @@ export default {
   data() {
     return {
       textarea: 'Test sentences 1。Test sentences 2！Test sentences 3？Test sentences 4：hello world! Test sentences 5? Test sentences 6. Test sentences 7! Test sentences 8: hello world!',
+      dialogFormVisible: false,
+      dialogUploadVisible: false,
     };
   },
   computed: {
@@ -40,6 +75,7 @@ export default {
       return this.$store.state.sentences;
     },
   },
+
   methods: {
     splitSentence: function Split() {
       const reg = /\. +|! *|; *|\? *|:*\n|。|；|！|？/g;
@@ -59,8 +95,30 @@ export default {
       this.$store.commit('loadSentences', strArray);
       this.$store.commit('loadTranslatedSentences', strArray);
     },
-    upload: () => {
-    },
   },
 };
 </script>
+<style>
+  table {
+    margin:auto;
+  }
+  .el-input {
+    width: 750px;
+    position: relative;
+  }
+  .el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+  }
+
+  .el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+  }
+
+  .el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+  }
+</style>
