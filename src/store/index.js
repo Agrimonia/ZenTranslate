@@ -34,9 +34,25 @@ export default new Vuex.Store({
       state.translatedSentences = translatedSentences;
     },
   },
-  // actions: {
-  //   machineTranslate(store, context) {
-
-  //   },
-  // },
+  actions: {
+    machineTranslate(store) {
+      fetch(process.env.MT_URL, {
+        method: 'POST',
+        headers: new Headers(),
+        body: JSON.stringify({
+          q: store.state.sentences,
+          target: 'zh-CN',
+        }),
+      }).then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Network Error');
+      }).then((result) => {
+        store.state.translatedSentences = result.data.translations.map(value => value.translatedText); // eslint-disable-line
+      }).catch((error) => {
+        console.log(`Error when fetching ${error.message}`); // eslint-disable-line no-console
+      });
+    },
+  },
 });
