@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <img src="../assets/logo.png">
-    <h1>Welcome to Zentranslator</h1>
-    <h2>A one-stop computer-assisted translation platform for lightweight translation work</h2>
+    <h1>欢迎使用 ZenTranslator 在线辅助翻译平台</h1>
+    <h2>借助 Google 翻译结果，缩短你的翻译时间</h2>
     <br>
     <br>
     <el-carousel :interval="4000" type="card" height="400px">
@@ -15,7 +15,7 @@
       <td>
         <el-button size="large" @click="dialogFormVisible = true">粘贴文本</el-button>
         <el-dialog size="small" :visible.sync="dialogFormVisible">
-          <el-steps :space="200" :active="1" center="true" finish-status="success">
+          <el-steps :space="200" :active="1" :center="true" finish-status="success">
             <el-step title="上传"></el-step>
             <el-step title="翻译"></el-step>
             <el-step title="导出"></el-step>
@@ -35,7 +35,7 @@
       <td>
         <el-button size="large" @click="dialogUploadVisible = true">上传文件</el-button>
         <el-dialog size="tiny" :visible.sync="dialogUploadVisible">
-          <el-steps :space="150" :active="1" center="true" finish-status="success">
+          <el-steps :space="150" :active="1" :center="true" finish-status="success">
             <el-step title="上传"></el-step>
             <el-step title="翻译"></el-step>
             <el-step title="导出"></el-step>
@@ -67,7 +67,7 @@
 export default {
   data() {
     return {
-      textarea: 'Test sentences 1。Test sentences 2！Test sentences 3？Test sentences 4：hello world! Test sentences 5? Test sentences 6. Test sentences 7! Test sentences 8: hello world!',
+      textarea: 'Test sentences 1。Test sentences 2!Test sentences 3？Test sentences 4：hello world! \nTest sentences 5? Test sentences 6. Test sentences 7! Test sentences 8: hello world!',
       dialogFormVisible: false,
       dialogUploadVisible: false,
     };
@@ -80,7 +80,7 @@ export default {
 
   methods: {
     splitSentence: function Split() {
-      const reg = /\. +|! *|; *|\? *|:*\n|。|；|！|？/g;
+      const reg = /\. +|! *|; *|\? *|: *|。|；|！|？|\n/g;
       let strArray = [];
       let strFlag = [];
       strFlag = this.textarea.match(reg);
@@ -89,13 +89,15 @@ export default {
       for (let count = 0; count < strArray.length; count += 1) {
         strArray[count] += strFlag[count];
       }
+      /*
       for (let count = 0; count < strArray.length; count += 1) {
         if (strArray[count] === '\n') {
-          strArray.splice(count, 1);
+          strArray[count] = '';
         }
       }
+      */
       this.$store.commit('loadSentences', strArray);
-      this.$store.commit('loadTranslatedSentences', strArray);
+      // this.$store.commit('loadTranslatedSentences', strArray);
     },
     beforeUpload(file) {
       const isTXT = file.type === 'text/plain';

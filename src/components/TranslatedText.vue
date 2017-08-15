@@ -1,8 +1,16 @@
 <template>
   <div style = "overflow-y: auto">
-    <div v-for="(sentence, key) in translatedSentences" :key="key">
-      <span @click="switchCurrentIndex(key)" :class="{selected:currentIndex==key}">{{sentence}}</span>
+    <span v-for="(sentence, key) in translatedSentences"
+      :key="key"
+      @click="switchCurrentIndex(key)"
+      :class="{selected:currentIndex==key}"
+      v-if=" sentence !== '' ">
+      {{sentence}}
+    </span>
+    <div v-else>
+      <br>
     </div>
+
   </div>
 </template>
 
