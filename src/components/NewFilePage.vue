@@ -6,8 +6,8 @@
     <br>
     <br>
     <el-carousel :interval="4000" type="card" height="400px">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3>{{ item }}</h3>
+      <el-carousel-item v-for="item in 3" :key="item">
+        <h3>介绍图片{{ item }}</h3>
         <!-- Need some pictures -->
       </el-carousel-item>
     </el-carousel>
@@ -44,10 +44,12 @@
             class="upload-demo"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
+            :show-file-list="true"
+            :before-upload="beforeUpload"
             >
             <i class="el-icon-upload"></i>
             <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-            <div class="el-upload__tip" slot="tip">只能上传文本文件，且不超过500kb</div>
+            <div class="el-upload__tip" slot="tip">只能上传TXT文件，且不超过100kb</div>
           </el-upload>
         </el-dialog>
       </td>
@@ -94,6 +96,17 @@ export default {
       }
       this.$store.commit('loadSentences', strArray);
       this.$store.commit('loadTranslatedSentences', strArray);
+    },
+    beforeUpload(file) {
+      const isTXT = file.type === 'text/plain';
+      const isLt100K = file.size / 1024 < 100;
+      if (!isTXT) {
+        this.$message.error('上传文件只能是 TXT 格式!');
+      }
+      if (!isLt100K) {
+        this.$message.error('上传文件大小不能超过 100KB!');
+      }
+      return isTXT && isLt100K;
     },
   },
 };
