@@ -85,17 +85,14 @@ export default {
       let strFlag = [];
       strFlag = this.textarea.match(reg);
       strArray = this.textarea.split(reg);
-      strArray.splice(strArray.length - 1, 1);
+      // strArray.splice(strArray.length - 1, 1);
       for (let count = 0; count < strArray.length; count += 1) {
         strArray[count] += strFlag[count];
       }
-      /*
-      for (let count = 0; count < strArray.length; count += 1) {
-        if (strArray[count] === '\n') {
-          strArray[count] = '';
-        }
+      if (strArray[strArray.length - 1] === 'undefined') {
+        strArray.splice(strArray.length - 1, 1);
       }
-      */
+
       this.$store.commit('loadSentences', strArray);
       // this.$store.commit('loadTranslatedSentences', strArray);
     },
