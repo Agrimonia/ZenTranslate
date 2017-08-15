@@ -64,6 +64,8 @@
 </template>
 
 <script>
+import tokenzier from 'sbd';
+
 export default {
   data() {
     return {
@@ -80,19 +82,13 @@ export default {
 
   methods: {
     splitSentence: function Split() {
-      const reg = /\. +|! *|; *|\? *|: *|。|；|！|？|\n/g;
-      let strArray = [];
-      let strFlag = [];
-      strFlag = this.textarea.match(reg);
-      strArray = this.textarea.split(reg);
-      // strArray.splice(strArray.length - 1, 1);
-      for (let count = 0; count < strArray.length; count += 1) {
-        strArray[count] += strFlag[count];
+      let strArray = this.textarea.split('\n');
+      const paracount = strArray.length;
+      for (let count = 0; count < paracount; count += 1) {
+        strArray = strArray.concat(tokenzier.sentences(strArray[count]));
+        strArray = strArray.concat('\n');
       }
-      if (strArray[strArray.length - 1] === 'undefined') {
-        strArray.splice(strArray.length - 1, 1);
-      }
-
+      strArray = strArray.slice(paracount);
       this.$store.commit('loadSentences', strArray);
       // this.$store.commit('loadTranslatedSentences', strArray);
     },
