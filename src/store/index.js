@@ -47,7 +47,7 @@ export default new Vuex.Store({
   },
   actions: {
     machineTranslate(store) {
-      fetch(process.env.MT_URL, {
+      fetch(`${process.env.MT_URL}?key=${process.env.API_KEY}`, {
         method: 'POST',
         headers: new Headers(),
         body: JSON.stringify({
