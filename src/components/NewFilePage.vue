@@ -98,7 +98,7 @@ export default {
       }
       strArray = strArray.slice(paracount);
       this.$store.commit('loadSentences', strArray);
-      // this.$store.commit('loadTranslatedSentences', strArray);
+      this.$store.dispatch('machineTranslate');
     },
     beforeUpload(file) {
       const isTXT = file.type === 'text/plain';

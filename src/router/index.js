@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import store from '../store';
 import editPage from '../components/EditPage';
 import newFilePage from '../components/NewFilePage';
 
@@ -17,9 +16,5 @@ export default new Router({
     path: '/editPage',
     name: 'editPage',
     component: editPage,
-    beforeEnter: (to, from, next) => {
-      store.dispatch('machineTranslate');
-      next();
-    },
   }],
 });
