@@ -9,6 +9,7 @@ export default new Vuex.Store({
     currentIndex: 0,
     sentences: [],
     translatedSentences: [],
+    language: '',
   },
   getters: {
     currentSentence: state => state.sentences[state.currentIndex],
@@ -40,6 +41,9 @@ export default new Vuex.Store({
     loadTranslatedSentences(state, translatedSentences) {
       state.translatedSentences = translatedSentences;
     },
+    changeLanguage(state, radio) {
+      state.language = (radio !== '1') ? 'en' : 'zh-CN';
+    },
   },
   actions: {
     machineTranslate(store) {
@@ -48,7 +52,7 @@ export default new Vuex.Store({
         headers: new Headers(),
         body: JSON.stringify({
           q: store.state.sentences,
-          target: 'zh-CN',
+          target: store.state.language,
         }),
       }).then((response) => {
         if (response.ok) {

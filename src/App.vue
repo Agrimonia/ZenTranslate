@@ -1,5 +1,5 @@
 <template>
-    <router-view></router-view>
+  <router-view></router-view>
 </template>
 
 <script>
@@ -19,7 +19,7 @@ export default {
   vertical-align: center;
   color: #2c3e50;
   margin-top: 40px;
-  
+
 }
 
 h1, h2 {

@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <img src="../assets/logo.png">
+    <img src="../assets/logo-without-text.png">
     <h1>欢迎使用 ZenTranslator 在线辅助翻译平台</h1>
     <h2>借助 Google 翻译结果，缩短你的翻译时间</h2>
     <br>
     <br>
+    <!--
     <el-carousel :interval="4000" type="card" height="400px">
       <el-carousel-item v-for="item in 3" :key="item">
         <h3>介绍图片{{ item }}</h3>
-        <!-- Need some pictures -->
       </el-carousel-item>
     </el-carousel>
+    -->
     <table>
       <td>
         <el-button size="large" @click="dialogFormVisible = true">粘贴文本</el-button>
@@ -20,6 +21,8 @@
             <el-step title="翻译"></el-step>
             <el-step title="导出"></el-step>
           </el-steps>
+          <el-radio class="radio" v-model="radio" label='1'>English->中文</el-radio>
+          <el-radio class="radio" v-model="radio" label='2'>中文->English</el-radio>
           <el-input type="textarea" :rows="20" placeholder="在这里键入或粘贴待翻译文本" v-model="textarea">
           </el-input>
           <br>
@@ -54,6 +57,9 @@
         </el-dialog>
       </td>
     </table>
+    <br>
+    <br>
+    <br>
     <div id="author">
       <h1>JoTang Studio</h1>
     </div>
@@ -72,6 +78,7 @@ export default {
       textarea: 'Test sentences 1。Test sentences 2!Test sentences 3？Test sentences 4：hello world! \nTest sentences 5? Test sentences 6. Test sentences 7! Test sentences 8: hello world!',
       dialogFormVisible: false,
       dialogUploadVisible: false,
+      radio: '1',
     };
   },
   computed: {
@@ -82,6 +89,7 @@ export default {
 
   methods: {
     splitSentence: function Split() {
+      this.$store.commit('changeLanguage', this.radio);
       let strArray = this.textarea.split('\n');
       const paracount = strArray.length;
       for (let count = 0; count < paracount; count += 1) {
