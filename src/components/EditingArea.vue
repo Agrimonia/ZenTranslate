@@ -3,13 +3,13 @@
     <el-input type="textarea"
       v-model="currentSentence"
       resize="both"
-      autosize
+      :autosize="{maxRows:5}"
       autofocus>
     </el-input>
     <div>
-      <el-button size="mini" @click="switchToPrevious()">上一句</el-button>
-      <el-button size="mini" @click="switchToNext()">下一句(Tab)</el-button>
-      <el-button size="mini" @click="resetText()">采用翻译建议</el-button>
+      <el-button type="small" @click="switchToPrevious()">上一句</el-button>
+      <el-button type="small" @click="switchToNext()">下一句(Tab)</el-button>
+      <el-button type="small" @click="resetText()">采用翻译建议</el-button>
     </div>
   </div>
 </template>
@@ -38,5 +38,7 @@ export default {
 </script>
 
 <style scoped>
-
+textarea{
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
 </style>

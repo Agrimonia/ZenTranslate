@@ -3,7 +3,6 @@
 </template>
 
 <script>
-// const reg = /\. |\n|! |; |\? /;
 export default {
   name: 'app',
 };
@@ -12,14 +11,18 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   vertical-align: center;
-  color: #2c3e50;
+  color: #1F2D3D;
   margin-top: 40px;
+}
 
+textarea {
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-size: medium;
 }
 
 h1, h2 {

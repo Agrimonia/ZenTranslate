@@ -88,7 +88,7 @@ export default {
   },
 
   methods: {
-    splitSentence: function Split() {
+    splitSentence() {
       this.$store.commit('changeLanguage', this.radio);
       let strArray = this.textarea.split('\n');
       const paracount = strArray.length;

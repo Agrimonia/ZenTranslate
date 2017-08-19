@@ -4,7 +4,7 @@
       :key="key"
       @click="switchCurrentIndex(key)"
       :class="{selected:currentIndex==key}"
-      v-if=" sentence !== '\n' ">
+      v-if=" sentence !== '' && sentence !== '\n' ">
       {{sentence}}
     </span>
     <div v-else>
@@ -34,7 +34,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .selected {
-  background-color: skyblue;
-  border-color: blue;
+  background-color: #D3DCE6;
 }
 </style>
