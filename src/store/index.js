@@ -22,11 +22,17 @@ export default new Vuex.Store({
       if (state.currentIndex === state.sentences.length) {
         state.currentIndex = 0;
       }
+      if (state.sentences[state.currentIndex] === '\n') {
+        state.currentIndex += 1;
+      }
     },
     switchToPrevious(state) {
       state.currentIndex -= 1;
       if (state.currentIndex === 0) {
         state.currentIndex = state.sentences.length;
+      }
+      if (state.sentences[state.currentIndex] === '\n') {
+        state.currentIndex += 1;
       }
     },
     switchCurrentIndex(state, key) {
