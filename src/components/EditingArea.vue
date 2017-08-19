@@ -1,5 +1,5 @@
 <template>
-  <div @keydown.tab.prevent="switchToNext()" draggable="true" >
+  <div @keydown.tab.prevent="switchToNext()" @keydown.enter.prevent draggable="true" >
     <el-input type="textarea"
       v-model="currentSentence"
       resize="both"

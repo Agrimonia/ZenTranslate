@@ -2,20 +2,20 @@
   <div>
     <el-row>
       <el-col :span="24">
-        <page-header></page-header>
+        <page-header/>
       </el-col>
     </el-row>
     <el-row :gutter="15">
       <el-col :span="12">
-        <raw-text class="text"></raw-text>
+        <raw-text class="text"/>
       </el-col>
       <el-col :span="12">
-        <translated-text class="text"></translated-text>
+        <translated-text class="text"/>
       </el-col>
     </el-row>
     <el-row>
       <el-col :span="10">
-        <editing-area></editing-area>
+        <editing-area/>
       </el-col>
     </el-row>
   </div>
