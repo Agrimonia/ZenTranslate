@@ -19,7 +19,7 @@ export default new Vuex.Store({
   mutations: {
     switchToNext(state) {
       state.currentIndex += 1;
-      if (state.currentIndex === state.sentences.length) {
+      if (state.currentIndex >= state.sentences.length) {
         state.currentIndex = 0;
       }
       if (state.sentences[state.currentIndex] === '\n') {
@@ -28,7 +28,7 @@ export default new Vuex.Store({
     },
     switchToPrevious(state) {
       state.currentIndex -= 1;
-      if (state.currentIndex === 0) {
+      if (state.currentIndex <= 0) {
         state.currentIndex = state.sentences.length;
       }
       if (state.sentences[state.currentIndex] === '\n') {

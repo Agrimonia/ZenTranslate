@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import tokenzier from 'sbd';
+import tokenzier from 'sbd'; // eslint-disable-line
 
 export default {
   data() {
@@ -90,13 +90,28 @@ export default {
   methods: {
     splitSentence() {
       this.$store.commit('changeLanguage', this.radio);
-      let strArray = this.textarea.split('\n');
-      const paracount = strArray.length;
-      for (let count = 0; count < paracount; count += 1) {
-        strArray = strArray.concat(tokenzier.sentences(strArray[count]));
-        strArray = strArray.concat('\n');
+      const reg = /。|；|！|？|\n/g;
+      let strArray = [];
+      if (this.radio === '2') {
+        let strFlag = [];
+        strFlag = this.textarea.match(reg);
+        strArray = this.textarea.split(reg);
+        // console.log(strArray); // eslint-disable-line
+        for (let count = 0; count < strArray.length; count += 1) {
+          strArray[count] += strFlag[count];
+        }
+        if (strArray[strArray.length - 1] === 'undefined') {
+          strArray.splice(strArray.length - 1, 1);
+        }
+      } else {
+        strArray = this.textarea.split('\n');
+        const paracount = strArray.length;
+        for (let count = 0; count < paracount; count += 1) {
+          strArray = strArray.concat(tokenzier.sentences(strArray[count]));
+          strArray = strArray.concat('\n');
+        }
+        strArray = strArray.slice(paracount);
       }
-      strArray = strArray.slice(paracount);
       this.$store.commit('loadSentences', strArray);
       this.$store.dispatch('machineTranslate');
     },
