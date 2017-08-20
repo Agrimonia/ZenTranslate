@@ -95,11 +95,8 @@ export default {
       if (this.radio === '2') {
         let strFlag = [];
         strFlag = this.textarea.match(reg);
-        strArray = this.textarea.split(reg);
-        // console.log(strArray); // eslint-disable-line
-        for (let count = 0; count < strArray.length; count += 1) {
-          strArray[count] += strFlag[count];
-        }
+        strArray = this.textarea.split(reg); //eslint-disable-next-line
+        strArray = strArray.map((value, i) => value.concat(strFlag[i]));
         if (strArray[strArray.length - 1] === 'undefined') {
           strArray.splice(strArray.length - 1, 1);
         }
