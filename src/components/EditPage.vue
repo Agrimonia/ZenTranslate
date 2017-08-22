@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @drop.prevent="freeDrag" @dragover.prevent>
     <el-row>
       <el-col :span="24">
         <page-header/>
@@ -7,15 +7,18 @@
     </el-row>
     <el-row :gutter="15">
       <el-col :span="12">
-        <raw-text class="text"/>
+        <raw-text class="text" />
       </el-col>
       <el-col :span="12">
-        <translated-text class="text"/>
+        <translated-text class="text" />
       </el-col>
     </el-row>
     <el-row>
       <el-col :span="10">
         <editing-area/>
+      </el-col>
+      <el-col :span="5" :offset="9">
+        <el-progress :text-inside="true" :stroke-width="18" :percentage="percentage"></el-progress>
       </el-col>
     </el-row>
   </div>
@@ -32,12 +35,24 @@ export default {
     translatedSentences() {
       return this.$store.state.translatedSentences;
     },
+    percentage() {
+      return Math.floor(
+        (this.$store.state.currentIndex * 100) / this.$store.state.translatedSentences.length);
+    },
   },
   components: {
     pageHeader,
     rawText,
     translatedText,
     editingArea,
+  },
+  methods: {
+    freeDrag(event) {
+      const offset = event.dataTransfer.getData('text/plain').split(',');
+      const dm = document.getElementById('dragme');
+      dm.style.left = `${event.clientX + parseInt(offset[0], 10)}px`;
+      dm.style.top = `${event.clientY + parseInt(offset[1], 10)}px`;
+    },
   },
 };
 </script>
