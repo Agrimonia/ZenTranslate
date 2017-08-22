@@ -15,7 +15,7 @@
     </el-row>
     <el-row>
       <el-col :span="10">
-        <editing-area/>
+        <editing-area ref="editingArea" />
       </el-col>
     </el-row>
   </div>
@@ -42,9 +42,9 @@ export default {
   methods: {
     freeDrag(event) {
       const offset = event.dataTransfer.getData('text/plain').split(',');
-      const dm = document.getElementById('dragme');
-      dm.style.left = `${event.clientX + parseInt(offset[0], 10)}px`;
-      dm.style.top = `${event.clientY + parseInt(offset[1], 10)}px`;
+      const style = this.$refs.editingArea.$el.style;
+      style.left = `${event.clientX + parseInt(offset[0], 10)}px`;
+      style.top = `${event.clientY + parseInt(offset[1], 10)}px`;
     },
   },
 };
