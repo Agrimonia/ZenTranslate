@@ -96,12 +96,12 @@ export default {
         let strFlag = [];
         strFlag = this.textarea.match(reg);
         strArray = this.textarea.split(reg);
-        strArray = strArray.map((value, i) => value.concat(strFlag[i]));
-        if (strArray[strArray.length - 1] === 'undefined') {
-          strArray.splice(strArray.length - 1, 1);
+        if (strArray(strArray.length - 1) === '') {
+          strArray.pop();
         }
+        strArray = strArray.map((value, i) => value.concat(strFlag[i]));
       } else {
-        strArray = this.textarea.split('\n');
+        strArray = this.textarea.split(/\n/g);
         const paracount = strArray.length;
         for (let count = 0; count < paracount; count += 1) {
           strArray = strArray.concat(tokenzier.sentences(strArray[count]));

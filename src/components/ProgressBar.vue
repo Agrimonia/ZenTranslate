@@ -12,7 +12,7 @@ export default {
   computed: {
     percentage() {
       return Math.floor(
-        (this.$store.state.currentIndex * 100) / this.$store.state.translatedSentences.length);
+        (this.$store.state.currentIndex * 100) / this.$store.state.sentences.length);
     },
   },
 };
