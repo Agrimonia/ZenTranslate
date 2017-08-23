@@ -14,11 +14,11 @@
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="10">
-        <editing-area ref="editingArea" />
+      <el-col :span="12">
+        <progress-bar />
       </el-col>
-      <el-col :span="6" :offset="18">
-        <el-progress :text-inside="true" :stroke-width="18" :percentage="percentage"></el-progress>
+      <el-col :span="6" :offset="16">
+        <editing-area ref="editingArea" />
       </el-col>
     </el-row>
   </div>
@@ -29,6 +29,7 @@ import pageHeader from './EditPageHeader';
 import rawText from './RawText';
 import translatedText from './TranslatedText';
 import editingArea from './EditingArea';
+import progressBar from './ProgressBar';
 
 export default {
   computed: {
@@ -45,6 +46,7 @@ export default {
     rawText,
     translatedText,
     editingArea,
+    progressBar,
   },
   methods: {
     freeDrag(event) {

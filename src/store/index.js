@@ -42,6 +42,9 @@ export default new Vuex.Store({
       state.translatedSentences[state.currentIndex] = editedSentence;
     },
     loadSentences(state, sentences) {
+      if (sentences[sentences.length - 1] === '\n') {
+        sentences.pop();
+      }
       state.sentences = sentences;
     },
     loadTranslatedSentences(state, translatedSentences) {
