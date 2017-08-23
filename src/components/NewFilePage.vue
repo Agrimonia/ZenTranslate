@@ -97,7 +97,7 @@ export default {
         strFlag = this.textarea.match(reg);
         strArray = this.textarea.split(reg);
         strArray = strArray.map((value, i) => value.concat(strFlag[i]));
-        if (strArray[strArray.length - 1] === undefined) {
+        if (strArray[strArray.length - 1] === 'undefined') {
           strArray.splice(strArray.length - 1, 1);
         }
       } else {
