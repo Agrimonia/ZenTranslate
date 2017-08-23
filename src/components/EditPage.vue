@@ -17,6 +17,9 @@
       <el-col :span="10">
         <editing-area ref="editingArea" />
       </el-col>
+      <el-col :span="6" :offset="18">
+        <el-progress :text-inside="true" :stroke-width="18" :percentage="percentage"></el-progress>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -31,6 +34,10 @@ export default {
   computed: {
     translatedSentences() {
       return this.$store.state.translatedSentences;
+    },
+    percentage() {
+      return Math.floor(
+        (this.$store.state.currentIndex * 100) / this.$store.state.translatedSentences.length);
     },
   },
   components: {
