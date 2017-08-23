@@ -17,7 +17,7 @@
       <el-col :span="10">
         <editing-area/>
       </el-col>
-      <el-col :span="5" :offset="9">
+      <el-col :span="6" :offset="18">
         <el-progress :text-inside="true" :stroke-width="18" :percentage="percentage"></el-progress>
       </el-col>
     </el-row>
