@@ -1,6 +1,7 @@
 <template>
-  <div @keydown.tab.prevent="switchToNext()" @keydown.enter.prevent draggable="true" @dragstart="freeDrag" id="dragme">
-    <el-input type="textarea" v-model="currentSentence" resize="both" :autosize="{maxRows:5}" autofocus>
+  <div @keydown.tab.prevent="switchToNext()" @keydown.enter.prevent  id="editingArea">
+    <div id="dragBar" @dragstart="freeDrag" draggable="true"></div>
+    <el-input type="textarea" v-model="currentSentence" resize="none" :rows="3" autofocus id="textarea">
     </el-input>
     <div>
       <el-button type="small" @click="switchToPrevious()">上一句</el-button>
@@ -29,21 +30,35 @@ export default {
       this.$store.commit('switchToPrevious');
     },
     freeDrag(event) {
-      const style = window.getComputedStyle(event.target, null);
       event.dataTransfer.setData('text/plain',
-        `${parseInt(style.getPropertyValue('left'), 10) - event.clientX},${parseInt(style.getPropertyValue('top'), 10) - event.clientY}`);
+        `${window.getComputedStyle(this.$el).left.slice(0, -2) - event.clientX},${window.getComputedStyle(this.$el).top.slice(0, -2) - event.clientY}`);
     },
   },
 };
 </script>
 
 <style scoped>
-textarea {
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+#textarea{
+  width: 580px;
+  margin: 10px;
+}
+#editingArea {
+  width: 600px;
+  height: 150px;
+  position: absolute;
+  border-style: solid;
+  border-width: thin;
+  border-color: #D3DCE6;
+  border-radius: 0.5em 0.5em 0 0;
+  background-color: white;
+  text-align: center;
 }
 
-#dragme {
-  width: 500px;
-  position: absolute;
+#dragBar{
+  height: 20px;
+  width: 600px;
+  border-radius: 0.5em 0.5em 0 0;
+  background-color: #D3DCE6;
+  cursor: move;
 }
 </style>
