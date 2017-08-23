@@ -9,7 +9,7 @@
         </el-steps>
       </el-col>
       <el-col :span="4" :offset="10">
-        <el-button id="fb" type="primary" @click="dialogFinishVisible = true">完成翻译</el-button>
+        <el-button id="fb" type="primary" @click="dialogFinishVisible = true, refreshData()">完成翻译</el-button>
       </el-col>
     </el-row>
     <el-dialog style="overflow-y: auto" size="small" :visible.sync="dialogFinishVisible">
@@ -36,11 +36,12 @@ export default {
   data() {
     return {
       dialogFinishVisible: false,
+      copyData: 'empty',
     };
   },
-  computed: {
-    copyData() {
-      return this.$store.state.translatedSentences.map(x => (x === '' ? '\n' : x)).join('');
+  methods: {
+    refreshData() {
+      this.copyData = this.$store.state.translatedSentences.map(x => (x === '' ? '\n' : x)).join('');
     },
   },
 };
