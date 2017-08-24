@@ -17,7 +17,7 @@
       <el-col :span="12">
         <progress-bar />
       </el-col>
-      <el-col :span="6" :offset="15">
+      <el-col :span="10" :offset="14">
         <editing-area ref="editingArea" />
       </el-col>
     </el-row>

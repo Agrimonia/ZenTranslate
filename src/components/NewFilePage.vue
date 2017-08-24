@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="../assets/logo-without-text.png">
+    <img src="../assets/ic_launcher.png">
     <h1>欢迎使用 ZenTranslator 在线辅助翻译平台</h1>
     <h2>借助 Google 翻译结果，缩短你的翻译时间</h2>
     <br>
@@ -36,7 +36,7 @@
         <h3>&emsp;或&emsp;</h3>
       </td>
       <td>
-        <el-button size="large" @click="dialogUploadVisible = true">上传文件</el-button>
+        <el-button size="large" :disabled="true" @click="dialogUploadVisible = true">上传文件</el-button>
         <el-dialog size="tiny" :visible.sync="dialogUploadVisible">
           <el-steps :space="150" :active="1" :center="true" finish-status="success">
             <el-step title="上传"></el-step>
@@ -75,7 +75,7 @@ import tokenzier from 'sbd'; // eslint-disable-line
 export default {
   data() {
     return {
-      textarea: 'Test sentences 1。Test sentences 2!Test sentences 3？Test sentences 4：hello world! \nTest sentences 5? Test sentences 6. Test sentences 7! Test sentences 8: hello world!',
+      textarea: '',
       dialogFormVisible: false,
       dialogUploadVisible: false,
       radio: '1',
@@ -95,11 +95,11 @@ export default {
       if (this.radio === '2') {
         let strFlag = [];
         strFlag = this.textarea.match(reg);
+        const flagcount = strFlag.length;
         strArray = this.textarea.split(reg);
-        if (strArray(strArray.length - 1) === '') {
-          strArray.pop();
+        for (let i = 0; i < flagcount; i += 1) {
+          strArray[i] = strArray[i].concat(strFlag[i]);
         }
-        strArray = strArray.map((value, i) => value.concat(strFlag[i]));
       } else {
         strArray = this.textarea.split(/\n/g);
         const paracount = strArray.length;
