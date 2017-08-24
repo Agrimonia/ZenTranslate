@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app">  
     <img src="../assets/ic_launcher.png">
     <h1>欢迎使用 ZenTranslator 在线辅助翻译平台</h1>
     <h2>借助 Google 翻译结果，缩短你的翻译时间</h2>
@@ -60,8 +60,8 @@
     <br>
     <br>
     <br>
-    <div id="author">
-      <h1>JoTang Studio</h1>
+    <div class="footer">
+      <h2>©&nbsp;2017&nbsp;♥&nbsp;Jotang Studio</h2>
     </div>
     <br>
     <br>
@@ -109,6 +109,9 @@ export default {
         }
         strArray = strArray.slice(paracount);
       }
+      while (strArray[strArray.length - 1] === '\n' || strArray[strArray.length - 1] === '') {
+        strArray.pop();
+      }
       this.$store.commit('loadSentences', strArray);
       this.$store.dispatch('machineTranslate');
     },
@@ -128,7 +131,7 @@ export default {
 </script>
 <style>
   table {
-    margin:auto;
+    margin: auto;
   }
   .el-input {
     width: 750px;
@@ -148,5 +151,11 @@ export default {
 
   .el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
+  }
+  .footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:100px;
   }
 </style>

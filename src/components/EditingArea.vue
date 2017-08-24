@@ -46,6 +46,8 @@ export default {
   width: 600px;
   height: 150px;
   position: absolute;
+  top: 40%;
+  left: 50%;
   border-style: solid;
   border-width: thin;
   border-color: #D3DCE6;

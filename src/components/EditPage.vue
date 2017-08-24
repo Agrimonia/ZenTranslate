@@ -15,12 +15,11 @@
     </el-row>
     <el-row>
       <el-col :span="12">
+        <br>
         <progress-bar />
       </el-col>
-      <el-col :span="10" :offset="14">
-        <editing-area ref="editingArea" />
-      </el-col>
     </el-row>
+    <editing-area ref="editingArea" /> 
   </div>
 </template>
 
@@ -64,7 +63,7 @@ export default {
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   font-size: medium;
   color: #1F2D3D;
-  height: 700px;
+  height: 20cm;
   border-style: solid;
   border-color: #58B7FF;
   border-width: 2px;
