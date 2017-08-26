@@ -60,9 +60,9 @@
     <br>
     <br>
     <br>
-    <div class="footer">
-      <h2>©&nbsp;2017&nbsp;♥&nbsp;Jotang Studio</h2>
-    </div>
+    <footer>
+      <p>&copy;&nbsp;2017&nbsp;&hearts;&nbsp;Jotang Studio</p>
+    </footer>
     <br>
     <br>
     <br>
@@ -152,10 +152,15 @@ export default {
   .el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
   }
-  .footer {
+
+  footer {
     position:absolute;
     bottom:0;
-    width:100%;
+    width: 100%;
     height:100px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-size: 16px;
+    margin-left: -8px;
+    margin-right:  -8px; 
   }
 </style>

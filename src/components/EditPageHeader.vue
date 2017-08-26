@@ -1,32 +1,32 @@
 <template>
   <div>
-    <el-row>
-      <el-col :span="4" :push="2">
+    <el-row id="header">
+      <el-col :span="4">
         <router-link to='/'>
           <el-button>返回首页</el-button>
         </router-link>
       </el-col>
-      <el-col :span="10" :push="3">
+      <el-col :span="16">
         <el-steps :space="300" :active="2" :center="true" finish-status="success" space="50%">
           <el-step title="上传"></el-step>
           <el-step title="翻译"></el-step>
           <el-step title="导出"></el-step>
         </el-steps>
       </el-col>
-      <el-col :span="4" :push="7">
+      <el-col :span="4">
         <el-button type="primary" @click="dialogFinishVisible = true, refreshData()">完成翻译</el-button>
       </el-col>
     </el-row>
     <el-dialog style="overflow-y: auto" size="small" :visible.sync="dialogFinishVisible">
       <el-row>
-        <el-col :span="10" :push="7">
+        <el-col :span="10" :offset="7">
           <el-steps :space="300" :active="3" :center="true" finish-status="success" space="50%">
             <el-step title="上传"></el-step>
             <el-step title="翻译"></el-step>
             <el-step title="导出"></el-step>
           </el-steps>
         </el-col>
-        <el-col :span="10" :push="10">
+        <el-col :span="7">
           <el-button type="primary" v-clipboard="copyData">一键复制</el-button>
         </el-col>
       </el-row>
@@ -65,3 +65,13 @@ export default {
   },
 };
 </script>
+<style scoped>
+  #header{
+    margin-top: 1%;
+  }
+
+  .el-row{
+    text-align: center;
+  }
+
+</style>
