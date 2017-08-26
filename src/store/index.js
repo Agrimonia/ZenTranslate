@@ -21,7 +21,7 @@ export default new Vuex.Store({
       if (state.currentIndex >= state.sentences.length) {
         state.currentIndex = 0;
       }
-      if (state.sentences[state.currentIndex] === '\n') {
+      while (state.sentences[state.currentIndex] === '\n') {
         state.currentIndex += 1;
       }
     },
@@ -30,7 +30,7 @@ export default new Vuex.Store({
       if (state.currentIndex <= 0) {
         state.currentIndex = state.sentences.length;
       }
-      if (state.sentences[state.currentIndex] === '\n') {
+      while (state.sentences[state.currentIndex] === '\n') {
         state.currentIndex += 1;
       }
     },
