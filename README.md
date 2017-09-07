@@ -1,6 +1,6 @@
 # ZenTranslator
 
-ZenTranslator是一个在线辅助翻译工具，方便非专业人士快速翻译并润色文章。界面大体上模仿Google Translate Toolkit，但相对轻量化。
+ZenTranslator是一个在线辅助翻译工具，方便非专业人士快速翻译并润色文章。界面大体上模仿Google Translate Toolkit，但相对轻量化，适合用于小段文字的快速翻译。暂时辅助翻译的手段只有谷歌翻译，还没有术语库等功能。
 
 ## 技术栈
 vue2 + vue-cli + vue-router + vuex + element-ui
