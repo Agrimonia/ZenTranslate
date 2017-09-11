@@ -2,7 +2,7 @@
   <div v-if="percentage !== 100">
     <el-progress :text-inside="true" :stroke-width="18" :percentage="percentage"></el-progress>
   </div>
-  <div v-else> 
+  <div v-else>
     <el-progress :text-inside="true" :stroke-width="18" :percentage="100" status="success"></el-progress>
   </div>
 </template>
@@ -11,8 +11,7 @@
 export default {
   computed: {
     percentage() {
-      return Math.floor(
-        (this.$store.state.currentIndex * 100) / this.$store.state.sentences.length);
+      return Math.floor((this.$store.state.currentIndex * 100) / (this.$store.state.translatedSentences.length - 1));// eslint-disable-line
     },
   },
 };
