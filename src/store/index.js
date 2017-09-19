@@ -18,7 +18,7 @@ export default new Vuex.Store({
   mutations: {
     switchToNext(state) {
       state.currentIndex += 1;
-      if (state.currentIndex >= state.sentences.length) {
+      if (state.currentIndex > state.sentences.length) {
         state.currentIndex = 0;
       }
       while (state.sentences[state.currentIndex] === '\n') {

@@ -57,7 +57,7 @@ export default {
   },
   watch: {
     percentage(currentPercentage) {
-      if (currentPercentage === 100) {
+      if (currentPercentage > 100) {
         this.dialogFinishVisible = true;
         this.refreshData();
       }
