@@ -6,7 +6,7 @@ ZenTranslator是一个在线辅助翻译工具，方便非专业人士快速翻�
 vue2 + vue-cli + vue-router + vuex + element-ui
 
 ## 在线预览
-在 Daocloud 的[云端测试环境](http://agrimonia-zentranslator.daoapp.io/)中
+在 Daocloud 的[云端测试环境](http://agrimonia-zentranslator.daoapp.io/)中(已下线)
 
 ## 功能设计
 - [x] 中英文分句
